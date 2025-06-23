@@ -74,34 +74,39 @@ NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your-clerk-publishable-key
 npm run dev
 # or
 yarn dev
-
+```
 
 ## 🔐 Authentication
-Clerk handles:
-    Sign In / Sign Up
-    Session management
-    JWT and server-side auth
-    Protected routes with middleware
 
+Clerk handles:
+Sign In / Sign Up
+Session management
+JWT and server-side auth
+Protected routes with middleware
 
 ## 🧪 Development Notes
+
 UI components are built with ShadCN UI
 Auth routes are wrapped in (auth)/layout.tsx to center forms
 Global layout (app/layout.tsx) wraps all pages with <ClerkProvider>
 
 ## 📦 Planned Features
- Dashboard with protected routes
- Custom theme toggle (light/dark mode)
- Profile page using Clerk's UserProfile
- API routes with authentication
- Form handling and validation
+
+Dashboard with protected routes
+Custom theme toggle (light/dark mode)
+Profile page using Clerk's UserProfile
+API routes with authentication
+Form handling and validation
 
 ## 📝 License
+
 This project is licensed under the MIT License.
 
 ## 💬 Feedback & Contributions
+
 Found a bug or have a feature request?
 Feel free to open an issue or submit a PR!
 
 ## 👨‍💻 Author
+
 Built with 🔥 for FourbTech by Sakib Ahmed

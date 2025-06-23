@@ -1,10 +1,13 @@
 import { type Metadata } from 'next';
-import { ClerkProvider, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
-import SignInButtonComponent from './(auth)/sign-in/page';
-import SignUpButtonComponent from './(auth)/sign-up/page';
+// import { ClerkProvider, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+import { ClerkProvider } from '@clerk/nextjs';
+// import SignInButtonComponent from './(auth)/sign-in/page';
+// import SignUpButtonComponent from './(auth)/sign-up/page';
 
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
+import { ModalProvider } from '@/providers/modal-provider';
+import { ToastProvider } from '@/providers/toast-provider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -32,7 +35,7 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased h-full`}
         >
-          <header className="flex justify-end items-center p-4 gap-4 h-16">
+          {/* <header className="flex justify-end items-center p-4 gap-4 h-16">
             <SignedOut>
               <SignInButtonComponent />
               <SignUpButtonComponent />
@@ -40,7 +43,9 @@ export default function RootLayout({
             <SignedIn>
               <UserButton />
             </SignedIn>
-          </header>
+          </header> */}
+          <ToastProvider />
+          <ModalProvider />
           {children}
         </body>
       </html>
