@@ -4,9 +4,6 @@ import prismadb from '@/lib/prismadb';
 import { BillboardClient } from './components/client';
 import { BillboardColumn } from './components/columns';
 
-// import { BillboardColumn } from './components/columns';
-// import { BillboardClient } from './components/client';
-
 const BillboardsPage = async ({ params }: { params: { storeId: string } }) => {
   const { storeId } = await params;
 

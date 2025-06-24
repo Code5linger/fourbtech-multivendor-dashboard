@@ -8,7 +8,6 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { Trash } from 'lucide-react';
 import { useParams, useRouter } from 'next/navigation';
-
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import {
@@ -27,7 +26,6 @@ import ImageUpload from '@/components/ui/image-upload';
 
 const formSchema = z.object({
   label: z.string().min(1),
-  // imageUrl: z.string().min(1),
   imageUrl: z.string().min(1, 'Please upload a background image'),
 });
 
@@ -135,6 +133,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
       </div>
       <Separator />
       <Form {...form}>
+        {/* Image */}
         <form
           onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-8 w-full"
@@ -157,6 +156,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
               </FormItem>
             )}
           />
+          {/* Label */}
           <div className="md:grid md:grid-cols-3 gap-8">
             <FormField
               control={form.control}

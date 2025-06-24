@@ -1,10 +1,21 @@
 'use client';
 
-import { CldUploadWidget } from 'next-cloudinary';
+import {
+  CldUploadWidget,
+  CloudinaryUploadWidgetInfo,
+  CloudinaryUploadWidgetResults,
+} from 'next-cloudinary';
+import Image from 'next/image';
+
+// import {
+//   CldUploadWidget,
+//   type CloudinaryUploadWidgetResults,
+//   type CloudinaryUploadWidgetInfo,
+// } from 'next-cloudinary';
+
 import { useEffect, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
-import Image from 'next/image';
 import { ImagePlus, Trash } from 'lucide-react';
 
 interface ImageUploadProps {
@@ -26,8 +37,20 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
     setIsMounted(true);
   }, []);
 
-  const onUpload = (result: any) => {
-    onChange(result.info.secure_url);
+  // const onUpload = (result: any) => {
+  //   onChange(result.info.secure_url);
+  // };
+
+  const onUpload = (result: CloudinaryUploadWidgetResults) => {
+    if (
+      result.event === 'success' &&
+      typeof result.info === 'object' &&
+      result.info !== null &&
+      'secure_url' in result.info
+    ) {
+      const info = result.info as CloudinaryUploadWidgetInfo;
+      onChange(info.secure_url);
+    }
   };
 
   if (!isMounted) {
@@ -56,7 +79,8 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
           </div>
         ))}
       </div>
-      <CldUploadWidget onUpload={onUpload} uploadPreset="rahpysun">
+      {/* O-O */}
+      <CldUploadWidget onUpload={onUpload} uploadPreset="nblu8g1u">
         {({ open }) => {
           const onClick = () => {
             open();
@@ -75,6 +99,42 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
           );
         }}
       </CldUploadWidget>
+      {/* O_o */}
+      {/* {isMounted && (
+        <CldUploadWidget uploadPreset="dbdhkuh4m">
+          {({ open, results }) => {
+            const onClick = () => {
+              open?.(); // Safe optional chaining
+            };
+
+            // Handle the uploaded result if needed
+            if (
+              results &&
+              results.event === 'success' &&
+              typeof results.info === 'object' &&
+              results.info !== null &&
+              'secure_url' in results.info
+            ) {
+              const info = results.info as CloudinaryUploadWidgetInfo;
+              if (!value.includes(info.secure_url)) {
+                onChange(info.secure_url); // Call your state handler
+              }
+            }
+
+            return (
+              <Button
+                type="button"
+                disabled={disabled}
+                variant="secondary"
+                onClick={onClick}
+              >
+                <ImagePlus className="h-4 w-4 mr-2" />
+                Upload an Image
+              </Button>
+            );
+          }}
+        </CldUploadWidget>
+      )} */}
     </div>
   );
 };
