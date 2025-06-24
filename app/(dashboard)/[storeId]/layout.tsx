@@ -5,9 +5,11 @@ import { auth } from '@clerk/nextjs/server';
 
 export default async function DashboardLayout(props: {
   children: React.ReactNode;
-  params: { storeId: string };
+  // params: { storeId: string };
+  params: Promise<{ storeId: string }> | { storeId: string };
 }) {
-  const { children, params } = props;
+  const { children } = props;
+  const params = await props.params;
   const { userId } = await auth();
 
   if (!userId) {
